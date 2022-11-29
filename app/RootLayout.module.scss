@@ -1,0 +1,9 @@
+.root-layout {
+  @apply flex flex-col;
+  &-nav {
+    @apply flex p-2;
+    &-item {
+      @apply p-2;
+    }
+  }
+}
