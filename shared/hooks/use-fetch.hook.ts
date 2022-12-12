@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../app/auth/use-auth.store';
 
 // Types
-import { FetchDataOptions } from '../interfaces/fetch-data.types';
+import { FetchDataOptions } from '../types/fetch-data.types';
 
 class FetchError extends Error {
   constructor(public response: Response, message?: string) {

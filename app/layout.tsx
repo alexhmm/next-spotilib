@@ -1,11 +1,15 @@
-import Link from 'next/link';
+import { Montserrat } from '@next/font/google';
 
 // Styles
 import styles from './RootLayout.module.scss';
-import './globals.scss';
+import '../shared/styles/globals.scss';
 
 // Wrapper
-import ReactQueryWrapper from './ReactQuerryWrapper';
+import ContentWrapper from '../shared/wrapper/ContentWrapper';
+import ReactQueryWrapper from '../shared/wrapper/ReactQuerryWrapper';
+import ThemeWrapper from '../shared/wrapper/ThemeWrapper';
+
+const montserrat = Montserrat({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
@@ -13,19 +17,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
-      <body>
-        <main className={styles['root-layout']}>
-          <nav className={styles['root-layout-nav']}>
-            <Link className={styles['root-layout-nav-item']} href="/">
-              Home
-            </Link>
-            <Link className={styles['root-layout-nav-item']} href="/notes">
-              Notes
-            </Link>
-          </nav>
-          <ReactQueryWrapper>{children}</ReactQueryWrapper>
-        </main>
+    <html className={montserrat.className}>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap"
+          rel="stylesheet"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/container-query-polyfill@1/dist/container-query-polyfill.modern.js"></script>
+      </head>
+      <body className={styles['root-layout']}>
+        <ReactQueryWrapper>
+          <ThemeWrapper>
+            <ContentWrapper>{children}</ContentWrapper>
+          </ThemeWrapper>
+        </ReactQueryWrapper>
       </body>
     </html>
   );

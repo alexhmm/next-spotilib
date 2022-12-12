@@ -3,7 +3,7 @@
 import { memo } from 'react';
 
 // Utils
-import { login } from '../../auth.utils';
+import { login } from '../../../auth/auth.utils';
 
 const Login = () => {
   return (

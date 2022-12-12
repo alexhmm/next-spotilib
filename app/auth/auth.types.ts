@@ -11,3 +11,7 @@ export interface Token {
   scope: string;
   token_type: string;
 }
+
+export interface TokenWithExpireDate extends Token {
+  expire_time: number;
+}

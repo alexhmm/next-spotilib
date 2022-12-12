@@ -1,36 +1,50 @@
 import create from 'zustand';
 
 // Types
-import { Token } from './auth.types';
+import { Token, TokenWithExpireDate } from './auth.types';
 
 export interface AuthState {
-  token: Token | undefined;
+  token: TokenWithExpireDate | undefined;
   setToken: (token: Token | undefined) => void;
 }
 
-export const useAuthStore = create<AuthState>((set) => ({
-  token: localStorage.getItem('frontend:token')
-    ? JSON.parse(localStorage.getItem('frontend:token') ?? '')
+export const useAuthStore = create<AuthState>((set, get) => ({
+  token: localStorage.getItem('app:token')
+    ? JSON.parse(localStorage.getItem('app:token') ?? '')
     : undefined,
   setToken: (token: Token | undefined) => {
     if (token) {
-      localStorage.setItem('frontend:accessToken', JSON.stringify(token));
+      // Calculate expire time by expires in and date
+      const date = new Date();
+      const currTime = date.getTime();
+      const expireTime = currTime + token.expires_in * 1000;
+
+      // Get refresh token from state
+      const stateRefreshToken = get().token?.refresh_token;
+
+      // Create updated token object
+      const updatedToken: TokenWithExpireDate = {
+        access_token: token.access_token,
+        expire_time: expireTime,
+        expires_in: token.expires_in,
+        refresh_token: token.refresh_token
+          ? token.refresh_token
+          : stateRefreshToken
+          ? stateRefreshToken
+          : '',
+        scope: token.scope,
+        token_type: token.token_type,
+      };
+
+      // Save token to local storage
+      localStorage.setItem('app:token', JSON.stringify(updatedToken));
+
       set((state) => ({
         ...state,
-        token: {
-          access_token: token.access_token,
-          expires_in: token.expires_in,
-          refresh_token: token.refresh_token
-            ? token.refresh_token
-            : state.token?.refresh_token
-            ? state.token?.refresh_token
-            : '',
-          scope: token.scope,
-          token_type: token.token_type,
-        },
+        token: updatedToken,
       }));
     } else {
-      localStorage.removeItem('frontend:accessToken');
+      localStorage.removeItem('app:token');
       set({ token: undefined });
     }
   },

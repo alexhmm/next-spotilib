@@ -1,7 +1,47 @@
+import { useRouter } from 'next/navigation';
+
+// Stores
+import { useAuthStore } from './use-auth.store';
+
 // Types
 import { Token } from './auth.types';
 
 export const useAuth = () => {
+  const router = useRouter();
+
+  // Auth store state
+  const [token, setToken] = useAuthStore((state) => [
+    state.token,
+    state.setToken,
+  ]);
+
+  /**
+   * Compare current date and access token expire date.
+   * @returns Auth access validity
+   */
+  const isAuthorized = () => {
+    if (token) {
+      if (new Date(token.expire_time) > new Date()) {
+        return true;
+      } else {
+        logout();
+        return false;
+      }
+    } else {
+      logout();
+      return false;
+    }
+  };
+
+  /**
+   * Logout user, remove token and store data.
+   */
+  const logout = () => {
+    localStorage.removeItem('app:token');
+    router.push('/login');
+    setToken(undefined);
+  };
+
   /**
    * Get token by code.
    * @param code Generated code.
@@ -45,6 +85,7 @@ export const useAuth = () => {
   };
 
   return {
+    isAuthorized,
     tokenGet,
     tokenByRefreshGet,
   };

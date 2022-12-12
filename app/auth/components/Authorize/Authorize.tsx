@@ -2,6 +2,7 @@
 
 import { memo, useEffect } from 'react';
 import { useQuery, UseQueryResult } from 'react-query';
+import { useRouter } from 'next/navigation';
 
 // Hooks
 import { useAuth } from '../../use-auth.hook';
@@ -14,14 +15,15 @@ import { useUserStore } from '../../../user/use-user.store';
 // Types
 import { UserProfile } from '../../../user/user.types';
 
-type AccountInfoProps = {
+type Authorize = {
   code: string;
   state?: string;
 };
 
-const AccountInfo = (props: AccountInfoProps) => {
+const Authorize = (props: Authorize) => {
   const { tokenGet, tokenByRefreshGet } = useAuth();
   const { fetchData } = useFetch();
+  const router = useRouter();
 
   // Auth store state
   const [token, setToken] = useAuthStore((state) => [
@@ -30,10 +32,7 @@ const AccountInfo = (props: AccountInfoProps) => {
   ]);
 
   // User store state
-  const [profile, setProfile] = useUserStore((state) => [
-    state.profile,
-    state.setProfile,
-  ]);
+  const [setProfile] = useUserStore((state) => [state.setProfile]);
 
   /**
    * Get user profile data by token.
@@ -56,6 +55,7 @@ const AccountInfo = (props: AccountInfoProps) => {
     refetchOnWindowFocus: false,
     onSuccess: (data) => {
       setToken(data);
+      router.replace('/');
     },
   });
 
@@ -79,48 +79,7 @@ const AccountInfo = (props: AccountInfoProps) => {
     tokenQuery.refetch();
   }, [props.code]);
 
-  return (
-    <>
-      <h2>Logged in as {profile?.display_name}</h2>
-      <p>
-        <b>Display name</b> {profile?.display_name}
-      </p>
-      <p>
-        <b>Id</b> {profile?.id}
-      </p>
-      <p>
-        <b>Email</b> {profile?.email}
-      </p>
-      <p>
-        <b>Spotify URI</b> {profile?.external_urls.spotify}
-      </p>
-      <p>
-        <b>Link</b> {profile?.href}
-      </p>
-      <p>
-        <b>Profile Image</b>&nbsp;
-        <img src={profile?.images[0].url} alt="Profile Image" />
-      </p>
-      <p>
-        <b>Country</b> {profile?.country}
-      </p>
-
-      <h1>oAuth Info</h1>
-      <p>
-        <b>Access token</b> {token?.access_token}
-      </p>
-      <p>
-        <b>Refresh token</b> {token?.refresh_token}
-      </p>
-
-      <button
-        className="mb-8 w-fit"
-        onClick={() => tokenByRefreshQuery.refetch()}
-      >
-        Obtain new token using the refresh token
-      </button>
-    </>
-  );
+  return <>Authorizing ...</>;
 };
 
-export default memo(AccountInfo);
+export default memo(Authorize);

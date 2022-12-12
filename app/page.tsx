@@ -1,14 +1,17 @@
 // Components
-import Login from './auth/components/Login/Login';
+import Dashboard from '../shared/components/Dashboard/Dashboard';
 
+// Route
+import ProtectedRoute from '../shared/router/ProtectedRoute';
 // Styles
-import styles from './Home.module.scss';
+import styles from './HomePage.module.scss';
 
 export default function HomePage() {
   return (
-    <div className={styles['home']}>
-      <h1>Home Page</h1>
-      <Login />
-    </div>
+    <ProtectedRoute>
+      <div className={styles['home-page']}>
+        <Dashboard />
+      </div>
+    </ProtectedRoute>
   );
 }
