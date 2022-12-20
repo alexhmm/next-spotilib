@@ -1,3 +1,25 @@
 .sidebar {
-  @apply flex flex-col;
+  @apply hidden flex-col justify-between h-[calc(100vh-64px)] sticky top-[64px] w-64;
+  @apply lg:flex;
+  // &-main {
+  //   @apply flex flex-col;
+  &-content {
+    @apply box-border flex flex-col h-[calc(100vh-192px)] pb-8 px-6 pt-4 overflow-y-auto relative;
+    &-info {
+      @apply h-16 mt-4 opacity-75 justify-self-end text-xs;
+    }
+  }
+  &-nav {
+    @apply box-border flex flex-col grow h-32 justify-between pt-8 px-6 relative;
+    &-bg {
+      @apply absolute h-4 left-0 -bottom-4 w-full z-10;
+    }
+    &-links {
+      @apply flex flex-col;
+    }
+    &-divider {
+      @apply mt-4;
+    }
+    // }
+  }
 }

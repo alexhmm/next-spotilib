@@ -12,10 +12,21 @@ declare module '@mui/material/styles' {
     '3xl': true;
     '4xl': true;
   }
+
+  interface PaletteColor {
+    sidebar?: string;
+  }
+
+  interface Palette {
+    bg: {
+      sidebar: string;
+    };
+  }
+
   interface PaletteOptions {
-    // bg: {
-    //   menu: string;
-    // };
+    bg: {
+      sidebar: string;
+    };
     border: {
       app: string;
     };
@@ -23,6 +34,26 @@ declare module '@mui/material/styles' {
     //   light: string;
     //   main: string;
     // };
+  }
+
+  interface Theme {
+    bg: {
+      sidebar: React.CSSProperties['color'];
+    };
+  }
+
+  interface ThemeOptions {
+    bg: {
+      sidebar: React.CSSProperties['color'];
+    };
+  }
+
+  interface PaletteColor {
+    sidebar?: string;
+  }
+
+  interface SimplePaletteColorOptions {
+    sidebar?: string;
   }
 }
 
@@ -44,22 +75,10 @@ const error = {
   main: '#f54336',
 };
 
-// const primary = {
-//   dark: '#008be2',
-//   light: '#309eed26',
-//   main: '#309eed'
-// };
-
-// const primaryDark = {
-//   dark: '#008be2',
-//   light: '#22333e',
-//   main: '#309eed',
-// };
-
-const primaryLight = {
-  dark: '#008be2',
-  light: '#e0f1fc',
-  main: '#309eed',
+const primary = {
+  dark: '#0ABE33',
+  light: '#62E390',
+  main: '#1ED760',
 };
 
 const secondary = {
@@ -85,21 +104,24 @@ const typography = {
 
 export const themeDark = createTheme({
   breakpoints,
+  bg: {
+    sidebar: '#0e0e0e',
+  },
   palette: {
     background: {
       default: '#171717',
       paper: '#202020',
     },
-    // bg: {
-    //   menu: '#0e0e0e',
-    // },
+    bg: {
+      sidebar: '#0e0e0e',
+    },
     border: {
       app: '#3a3a3a',
     },
     error,
     mode: 'dark',
     // orange,
-    // primary: primaryDark,
+    primary: primary,
     secondary,
     // success,
     warning,
@@ -109,27 +131,29 @@ export const themeDark = createTheme({
 
 export const themeLight = createTheme({
   breakpoints,
+  bg: {
+    sidebar: '#fafafa',
+  },
   palette: {
     background: {
       default: '#fcfcfc',
     },
-    // bg: {
-    //   menu: '#fafafa',
-    // },
+    bg: {
+      sidebar: '#fafafa',
+    },
     border: {
       app: '#eaeaea',
     },
     error,
-    info: primaryLight,
     mode: 'light',
     // orange,
-    primary: primaryLight,
+    primary: primary,
     secondary,
     // success,
-    text: {
-      primary: '#444d58',
-      secondary: '#8ea3b6',
-    },
+    // text: {
+    //   primary: '#444d58',
+    //   secondary: '#8ea3b6',
+    // },
     warning,
   },
   typography,

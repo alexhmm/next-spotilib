@@ -1,5 +1,8 @@
 import fs from 'fs';
 
+// Router
+import ProtectedRoute from '../../../shared/router/ProtectedRoute';
+
 // Styles
 import styles from './Note.module.scss';
 
@@ -23,13 +26,15 @@ export default async function NotePage({ params }: any) {
   const note = await getNote(params.id);
 
   return (
-    <div className={styles['note']}>
-      <h1>notes/{params.id}</h1>
-      {note ? (
-        <h3>{note.title}</h3>
-      ) : (
-        <div>Note with id {params.id} not found.</div>
-      )}
-    </div>
+    <ProtectedRoute>
+      <div className={styles['note']}>
+        <h1>notes/{params.id}</h1>
+        {note ? (
+          <h3>{note.title}</h3>
+        ) : (
+          <div>Note with id {params.id} not found.</div>
+        )}
+      </div>
+    </ProtectedRoute>
   );
 }

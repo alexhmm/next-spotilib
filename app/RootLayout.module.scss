@@ -1,22 +1,15 @@
 .root-layout {
-  @apply flex flex-row min-h-screen w-screen;
+  @apply flex flex-row min-h-screen w-full;
 }
 
 .root-layout-page {
   @apply bg-contain flex flex-col items-center min-h-screen h-fit w-full;
   &-content {
     @apply flex w-full;
-    @apply lg:w-[960px] xl:w-[1080px] 2xl:w-[1280px];
     &-main {
-      @apply grow p-2;
-      @apply sm:px-4 sm:py-8;
-    }
-    &-sidebar {
-      @apply hidden;
-      @apply lg:flex flex-col lg:justify-between lg:h-[calc(100vh-64px)] lg:overflow-y-auto lg:px-4 lg:py-8 lg:sticky lg:top-[64px] lg:w-60;
-      &-info {
-        @apply text-xs mt-4;
-      }
+      @apply box-border grow p-2;
+      @apply sm:p-4;
+      @apply lg:p-8;
     }
   }
 }

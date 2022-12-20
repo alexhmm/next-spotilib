@@ -1,10 +1,8 @@
-import { useTranslation } from 'react-i18next';
-
-// Stores
-import { useAuthStore } from '../../app/auth/use-auth.store';
-
 // Types
 import { FetchDataOptions } from '../types/fetch-data.types';
+
+// Stores
+import { useAuthStore } from '../stores/use-auth.store';
 
 class FetchError extends Error {
   constructor(public response: Response, message?: string) {
@@ -13,10 +11,6 @@ class FetchError extends Error {
 }
 
 export const useFetch = () => {
-  //   const { logout } = useLogout();
-  const { t } = useTranslation();
-
-  // Auth store state
   const [token] = useAuthStore((state) => [state.token]);
 
   /**
@@ -73,7 +67,8 @@ export const useFetch = () => {
         // logout();
         return '';
       default:
-        return `Code ${status}: ${t('app.fetch.error.response')}`;
+        // return `Code ${status}: ${t('app.fetch.error.response')}`;
+        return `Code ${status}`;
     }
   };
 

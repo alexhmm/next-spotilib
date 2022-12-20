@@ -1,11 +1,11 @@
 'use client';
 
 import { memo } from 'react';
-import { Box } from '@mui/material';
+import { signOut, useSession } from 'next-auth/react';
+import { Box, Button } from '@mui/material';
 
 // Stores
 import { useThemeStore } from '../../stores/use-theme.store';
-import { useUserStore } from '../../../app/user/use-user.store';
 
 // Styles
 import styles from './Header.module.scss';
@@ -14,31 +14,37 @@ import styles from './Header.module.scss';
 import { Theme } from '../../types/shared.types';
 
 const Header = () => {
+  const { data: session, status } = useSession();
+
   // Theme store state
   const [theme, setTheme] = useThemeStore((state) => [
     state.theme,
     state.setTheme,
   ]);
 
-  // User store state
-  const [profile] = useUserStore((state) => [state.profile]);
-
   return (
-    <Box className={styles['header']} sx={{ borderColor: 'border.app' }}>
-      <div className={styles['header-content']}>
-        <div className={styles['header-content-logo']}>Spotilib</div>
-        <div className={styles['header-content-nav']}>
-          <button
+    <div className={styles['header']}>
+      <Box
+        className={styles['header-logo']}
+        sx={{ backgroundColor: 'bg.sidebar' }}
+      >
+        Spotilib
+      </Box>
+      <div className={styles['header-info']}>
+        {status !== 'loading' && (
+          <Button
             onClick={() =>
               setTheme(theme === Theme.Light ? Theme.Dark : Theme.Light)
             }
           >
-            Toggle
-          </button>
-          {profile && <div>{profile.display_name}</div>}
-        </div>
+            Toggle Theme
+          </Button>
+        )}
+        {status === 'authenticated' && (
+          <Button onClick={() => signOut()}>{session.user?.name}</Button>
+        )}
       </div>
-    </Box>
+    </div>
   );
 };
 

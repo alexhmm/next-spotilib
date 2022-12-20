@@ -1,7 +1,7 @@
 import create from 'zustand';
 
 // Types
-import { Token, TokenWithExpireDate } from './auth.types';
+import { Token, TokenWithExpireDate } from '../types/auth.types';
 
 export interface AuthState {
   token: TokenWithExpireDate | undefined;

@@ -1,6 +1,9 @@
 import fs from 'fs';
 import Link from 'next/link';
 
+// Router
+import ProtectedRoute from '../../shared/router/ProtectedRoute';
+
 // Styles
 import styles from './Notes.module.scss';
 
@@ -41,13 +44,15 @@ export default async function NotesPage() {
   const notes = await getNotes();
 
   return (
-    <div className={styles['notes']}>
-      <h1>Notes</h1>
-      <div>
-        {notes?.map((note) => {
-          return <Note key={note.id} note={note} />;
-        })}
+    <ProtectedRoute>
+      <div className={styles['notes']}>
+        <h1>Notes</h1>
+        <div>
+          {notes?.map((note) => {
+            return <Note key={note.id} note={note} />;
+          })}
+        </div>
       </div>
-    </div>
+    </ProtectedRoute>
   );
 }

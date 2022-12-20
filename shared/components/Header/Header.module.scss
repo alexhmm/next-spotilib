@@ -1,16 +1,15 @@
 .header {
-  @apply border-0 border-b border-solid flex h-16 justify-center sticky top-0 w-full z-10;
-  backdrop-filter: blur(8px);
-  &-content {
-    @apply flex items-center justify-between w-full;
-    @apply lg:w-[960px] xl:w-[1080px] 2xl:w-[1280px];
-    &-logo {
-      @apply flex font-bold items-center px-2 w-60;
-      @apply sm:px-4;
-    }
-    &-nav {
-      @apply flex grow items-center justify-end px-2;
-      @apply sm:px-4;
-    }
+  @apply flex h-16 items-center justify-center sticky top-0 w-full z-10;
+  &-info {
+    // @apply border-0 border-b border-solid flex grow h-full  items-center justify-end relative;
+    // backdrop-filter: blur(8px);
+    @apply flex grow h-full  items-center justify-end relative;
+    @apply sm:px-4;
+    @apply lg:px-6;
+  }
+  &-logo {
+    @apply box-border flex font-bold h-full items-center px-2 w-64;
+    @apply sm:px-4;
+    @apply lg:px-6;
   }
 }

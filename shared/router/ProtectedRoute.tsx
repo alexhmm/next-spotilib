@@ -1,36 +1,30 @@
 'use client';
 
-import { memo, ReactNode, useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { memo, ReactNode } from 'react';
+import { useSession } from 'next-auth/react';
 
-// Hooks
-import { useAuth } from '../../app/auth/use-auth.hook';
+// Components
+import Login from '../components/Login/Login';
 
 type ProtectedRouteProps = {
   children: ReactNode;
 };
 
 /**
- * Wrapper component that navigates to the login screen if not authorized.
+ * Wrapper component that displays login screen if not authenticated.
  * @param props ProtectedRouteProps
  * @returns ReactNode
  */
 const ProtectedRoute = (props: ProtectedRouteProps) => {
-  const { isAuthorized } = useAuth();
-  const router = useRouter();
+  const { status } = useSession();
 
-  const [show, setShow] = useState<boolean>(false);
-
-  // Show children if authorized on mount
-  useEffect(() => {
-    if (isAuthorized()) {
-      setShow(true);
-    } else {
-      router.replace('/login');
-    }
-  }, []);
-
-  return <>{show ? props.children : <div>Loading...</div>}</>;
+  return (
+    <>
+      {status === 'loading' && <div>Loading ...</div>}
+      {status === 'authenticated' && props.children}
+      {status === 'unauthenticated' && <Login />}
+    </>
+  );
 };
 
 export default memo(ProtectedRoute);

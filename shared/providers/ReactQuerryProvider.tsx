@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 // Passing server components as a child or prop of a Client Component. You can do this by wrapping both components in another Server Component:
@@ -17,8 +18,8 @@ type Props = {
   children: React.ReactNode;
 };
 
-const ReactQueryWrapper = ({ children }: Props) => (
+const ReactQueryProvider = ({ children }: Props) => (
   <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 );
 
-export default ReactQueryWrapper;
+export default memo(ReactQueryProvider);
