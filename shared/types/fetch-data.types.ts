@@ -1,7 +1,7 @@
 export interface FetchDataOptions {
   body?: any;
   method?: string;
-  params?: FetchDataParams;
+  params?: URLSearchParams;
 }
 
 export interface FetchDataParams {

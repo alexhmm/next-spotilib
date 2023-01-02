@@ -12,11 +12,39 @@ import SessionProvider from '../shared/providers/SessionProvider';
 import styles from './RootLayout.module.scss';
 import '../shared/styles/globals.scss';
 
+// async function getPlaylists(): Promise<PlaylistsResponse | undefined> {
+//   const session: SpotilibSession | null = await unstable_getServerSession(
+//     authOptions
+//   );
+
+//   if (session?.token?.accessToken) {
+//     const params = new URLSearchParams({
+//       limit: '25',
+//     }).toString();
+
+//     const url = `https://api.spotify.com/v1/users/${
+//       session?.token?.providerAccountId
+//     }/playlists${params && params?.length > 0 ? `?${params}` : ''}`;
+
+//     const res = await fetch(url, {
+//       headers: {
+//         Authorization: `Bearer ${session?.token?.accessToken}`,
+//         'Content-Type': 'application/json',
+//         Accept: 'application/json',
+//       },
+//     });
+//     return res.json();
+//   } else {
+//     return Promise.resolve(undefined);
+//   }
+// }
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // const playlists = await getPlaylists();
   return (
     <html lang="en">
       <head>

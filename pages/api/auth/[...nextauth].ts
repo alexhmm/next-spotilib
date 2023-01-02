@@ -36,6 +36,9 @@ export const authOptions = {
       clientSecret: process.env.CLIENT_SECRET ?? '',
     }),
   ],
+  session: {
+    maxAge: 3600,
+  },
 };
 
 // @ts-ignore

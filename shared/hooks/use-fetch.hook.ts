@@ -1,8 +1,10 @@
+import { signOut, useSession } from 'next-auth/react';
+
 // Types
 import { FetchDataOptions } from '../types/fetch-data.types';
 
 // Stores
-import { useAuthStore } from '../stores/use-auth.store';
+import { SpotilibSession } from '../types/auth.types';
 
 class FetchError extends Error {
   constructor(public response: Response, message?: string) {
@@ -11,7 +13,7 @@ class FetchError extends Error {
 }
 
 export const useFetch = () => {
-  const [token] = useAuthStore((state) => [state.token]);
+  const { data: session, status } = useSession();
 
   /**
    * Fetch data by query.
@@ -20,38 +22,37 @@ export const useFetch = () => {
    * @returns JSON data | Error
    */
   const fetchData = (path: string, options?: FetchDataOptions) => {
-    try {
-      let query = {};
+    const spotilibSession = session as SpotilibSession;
+    if (spotilibSession.token?.accessToken && status === 'authenticated') {
+      try {
+        // Cast query params to string
+        const params = options?.params?.toString();
 
-      // #TODO: Needs to be more intelligent..
-      if (options?.params?.id) {
-        const id = { id: options.params.id };
-        Object.assign(query, id);
-      }
+        // Setup url with query params
+        const url = `https://api.spotify.com/v1/${path}${
+          params && params?.length > 0 ? `?${options?.params}` : ''
+        }`;
 
-      const url = `https://api.spotify.com/v1/${path}${
-        Object.keys(query).length > 0 ? `?${new URLSearchParams(query)}` : ''
-      }`;
-
-      return fetch(url, {
-        body: options?.body ? JSON.stringify(options.body) : undefined,
-        method: options?.method,
-        headers: {
-          Authorization: `Bearer ${token?.access_token}`,
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      }).then(async (response) => {
-        if (!response.ok) {
-          throw new FetchError(response);
-        }
-        return await response.json().catch((error) => {
-          console.error('Error fetching data:', error);
-          return {};
+        return fetch(url, {
+          body: options?.body ? JSON.stringify(options.body) : undefined,
+          method: options?.method,
+          headers: {
+            Authorization: `Bearer ${spotilibSession.token?.accessToken}`,
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+        }).then(async (response) => {
+          if (!response.ok) {
+            throw new FetchError(response);
+          }
+          return await response.json().catch((error) => {
+            console.error('Error fetching data:', error);
+            return {};
+          });
         });
-      });
-    } catch (error) {
-      console.error('ERROR fetching data:', error);
+      } catch (error) {
+        console.error('ERROR fetching data:', error);
+      }
     }
   };
 
@@ -64,7 +65,7 @@ export const useFetch = () => {
     switch (status) {
       case 401:
         // Logout if unauthorized
-        // logout();
+        signOut();
         return '';
       default:
         // return `Code ${status}: ${t('app.fetch.error.response')}`;

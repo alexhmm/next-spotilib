@@ -1,6 +1,6 @@
 'use client';
 
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { signOut, useSession } from 'next-auth/react';
 import { Box, Button } from '@mui/material';
 
@@ -21,6 +21,13 @@ const Header = () => {
     state.theme,
     state.setTheme,
   ]);
+
+  // Sign out if session expired
+  useEffect(() => {
+    if (session?.expires && new Date(session?.expires) < new Date()) {
+      signOut();
+    }
+  }, [session]);
 
   return (
     <div className={styles['header']}>
