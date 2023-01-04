@@ -9,7 +9,7 @@
     @apply h-full mt-4 opacity-75 justify-self-end text-xs;
   }
   &-playlists {
-    @apply w-full;
+    @apply flex flex-col w-full;
     &-item {
       @apply flex-1 min-w-0 mb-2 truncate w-full;
     }

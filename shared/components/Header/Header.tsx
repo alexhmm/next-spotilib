@@ -4,6 +4,9 @@ import { memo, useEffect } from 'react';
 import { signOut, useSession } from 'next-auth/react';
 import { Box, Button } from '@mui/material';
 
+// Hooks
+import { useBreakpoints } from '../../hooks/use-breakpoints.hook';
+
 // Stores
 import { useThemeStore } from '../../stores/use-theme.store';
 
@@ -14,6 +17,7 @@ import styles from './Header.module.scss';
 import { Theme } from '../../types/shared.types';
 
 const Header = () => {
+  const { lgDown } = useBreakpoints();
   const { data: session, status } = useSession();
 
   // Theme store state
@@ -33,7 +37,7 @@ const Header = () => {
     <div className={styles['header']}>
       <Box
         className={styles['header-logo']}
-        sx={{ backgroundColor: 'bg.sidebar' }}
+        sx={{ backgroundColor: lgDown ? undefined : 'bg.sidebar' }}
       >
         Spotilib
       </Box>

@@ -109,12 +109,13 @@ const Sidebar = () => {
               {playlists &&
                 playlists.items.length > 0 &&
                 playlists.items.map((playlist) => (
-                  <div
+                  <Link
                     key={playlist.id}
                     className={styles['sidebar-content-playlists-item']}
+                    href={`/playlists/${playlist.id}`}
                   >
                     {playlist.name}
-                  </div>
+                  </Link>
                 ))}
             </>
           )}
