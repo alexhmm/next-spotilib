@@ -1,0 +1,15 @@
+{
+  "common": {
+    "nav": {
+      "home": "Home",
+      "posts": "Beiträge"
+    },
+    "settings": {
+      "language": {
+        "de": "Deutsch (DE)",
+        "en": "Englisch (EN)",
+        "title": "Sprache ändern"
+      }
+    }
+  }
+}
