@@ -1,5 +1,13 @@
 {
   "common": {
+    "menu": {
+      "about": "About us",
+      "home": "Home",
+      "imprint": "Imprint",
+      "login": "Login",
+      "logout": "Logout",
+      "privacy": "Privacy"
+    },
     "nav": {
       "home": "Home",
       "posts": "Posts"

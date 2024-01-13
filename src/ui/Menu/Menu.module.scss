@@ -1,0 +1,42 @@
+.menu {
+  @apply flex gap-1 items-center normal-case p-0 rounded-none w-fit;
+  &-title {
+    @apply truncate;
+  }
+}
+
+.menu-button {
+  @apply flex justify-start normal-case rounded-none w-full;
+}
+
+.menu-checkbox {
+  @apply flex items-center justify-between normal-case rounded-none;
+  &-content {
+    @apply flex gap-4 items-center justify-start;
+    &-elem {
+      @apply h-6 w-6;
+    }
+    &-title {
+      @apply grow;
+    }
+  }
+}
+
+.menu-item {
+  @apply px-4 py-1;
+  &-icon {
+    @apply flex items-center justify-center;
+    & svg {
+      @apply mr-4 h-5 w-5;
+    }
+  }
+}
+
+.menu-popover {
+  &-content {
+    @apply flex flex-col py-2;
+  }
+  &-paper {
+    @apply mt-2 overflow-y-auto rounded-none shadow-lg;
+  }
+}

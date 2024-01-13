@@ -2,10 +2,8 @@
 import { Button } from '@mui/material';
 import { signIn, useSession } from 'next-auth/react';
 
-const Login = () => {
+const LoginContent = () => {
   const session = useSession();
-
-  console.log('SESSION', session);
 
   return (
     <Button
@@ -17,4 +15,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginContent;

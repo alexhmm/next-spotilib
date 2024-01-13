@@ -1,0 +1,9 @@
+.header {
+  @apply flex h-16 items-center justify-between;
+  &-authorized {
+    @apply px-4 w-screen xl:px-8;
+  }
+  &-unauthorized {
+    @apply px-4 w-screen xl:w-[1280px];
+  }
+}

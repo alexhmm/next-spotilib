@@ -1,10 +1,13 @@
 'use client';
 
-import { orange, red, teal } from '@mui/material/colors';
+import { CSSProperties } from 'react';
+import { red, teal } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
-import { Montserrat } from 'next/font/google';
+import { Outfit } from 'next/font/google';
+import { TypographyOptions } from '@mui/material/styles/createTypography';
+import '@mui/material/Typography';
 
-const montserrat = Montserrat({
+const outfit = Outfit({
   weight: ['300', '400', '500', '600', '700'],
   style: ['normal'],
   subsets: ['latin'],
@@ -49,6 +52,23 @@ declare module '@mui/material/styles' {
     header?: string;
     menu?: string;
   }
+
+  interface TypographyVariants {
+    body3: CSSProperties;
+    title: CSSProperties;
+  }
+
+  interface TypographyVariantsOptions {
+    body3: CSSProperties;
+    title: CSSProperties;
+  }
+}
+
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    body3: true;
+    title: true;
+  }
 }
 
 const breakpoints = {
@@ -70,15 +90,29 @@ const error = {
 };
 
 const primary = {
-  main: orange[400],
+  main: '#e3f320',
 };
 
 const secondary = {
   main: teal[400],
 };
 
-const typography = {
-  fontFamily: montserrat.style.fontFamily,
+const typography: TypographyOptions = {
+  fontFamily: outfit.style.fontFamily,
+
+  // poster: {
+  //   color: 'red',
+  //   fontWeight: 900,
+  // },
+  body3: {
+    fontSize: 30,
+    color: '#ff0000',
+  },
+  title: {
+    fontSize: 16,
+    letterSpacing: '0.1em',
+    textTransform: 'uppercase',
+  },
 };
 
 // Create a theme instance.
@@ -87,6 +121,7 @@ export const darkTheme = createTheme({
   palette: {
     background: {
       paper: '#1f1f1f',
+      default: '#1f1f1f',
     },
     action: {
       hover: 'rgba(255, 255, 255, 0.08)',

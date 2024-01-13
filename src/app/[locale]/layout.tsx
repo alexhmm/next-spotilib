@@ -5,6 +5,7 @@ import { getServerSession } from 'next-auth';
 import { unstable_setRequestLocale } from 'next-intl/server';
 
 // Components
+import Header from '@/components/Header/Header';
 import Nav from '@/components/Nav/Nav';
 
 // Providers
@@ -48,8 +49,11 @@ export default async function RootLayout({
       <body>
         <SessionProvider session={session}>
           <QueryClientProvider>
-            <Nav locale={locale} />
-            <ThemeRegistry options={{ key: 'mui' }}>{children}</ThemeRegistry>
+            <ThemeRegistry options={{ key: 'mui' }}>
+              <Header unauthorized={!session} />
+              <Nav locale={locale} />
+              {children}
+            </ThemeRegistry>
           </QueryClientProvider>
         </SessionProvider>
       </body>

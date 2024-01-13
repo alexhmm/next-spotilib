@@ -1,5 +1,13 @@
 {
   "common": {
+    "menu": {
+      "about": "Über uns",
+      "home": "Home",
+      "imprint": "Impressum",
+      "login": "Anmelden",
+      "logout": "Abmelden",
+      "privacy": "Datenschutzerklärung"
+    },
     "nav": {
       "home": "Home",
       "posts": "Beiträge"
