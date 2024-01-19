@@ -1,12 +1,19 @@
 'use client';
-import { Button } from '@mui/material';
+
 import { signOut, useSession } from 'next-auth/react';
+
+// UI
+import Button from '@/ui/Button/Button';
 
 const Logout = () => {
   const session = useSession();
 
   return (
-    <Button disabled={session.status === 'loading'} onClick={() => signOut()}>
+    <Button
+      disabled={session.status === 'loading'}
+      variant="contained"
+      onClick={() => signOut()}
+    >
       Sign out from Spotify
     </Button>
   );

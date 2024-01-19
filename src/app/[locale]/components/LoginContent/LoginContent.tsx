@@ -1,6 +1,7 @@
 'use client';
-import { Button } from '@mui/material';
+
 import { signIn, useSession } from 'next-auth/react';
+import { Button } from '@mui/material';
 
 const LoginContent = () => {
   const session = useSession();

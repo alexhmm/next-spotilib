@@ -1,7 +1,7 @@
 'use client';
 
-import { Button, Checkbox } from '@mui/material';
 import { FC, ReactNode } from 'react';
+import { Button, Checkbox } from '@mui/material';
 import clsx from 'clsx';
 
 // Styles

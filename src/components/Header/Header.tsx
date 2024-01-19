@@ -1,16 +1,22 @@
 import { FC } from 'react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import clsx from 'clsx';
 
 // Styles
 import styles from './Header.module.scss';
 import HeaderMenu from '../HeaderMenu/HeaderMenu';
+import HeaderButton from '../HeaderButton/HeaderButton';
 
 type HeaderProps = {
   unauthorized?: boolean;
 };
 
 const Header: FC<HeaderProps> = (props) => {
+  const t = useTranslations('common');
+
+  console.log('unauthorized', props.unauthorized);
+
   return (
     <div
       className={clsx(
@@ -27,7 +33,18 @@ const Header: FC<HeaderProps> = (props) => {
         height={20}
         priority
       />
-      <HeaderMenu />
+      {props.unauthorized ? (
+        <div className={styles['header-content']}>
+          {props.unauthorized && (
+            <>
+              <HeaderButton href="/about">{t('menu.about')}</HeaderButton>
+              <HeaderButton href="/faq">{t('menu.faq')}</HeaderButton>
+            </>
+          )}
+        </div>
+      ) : (
+        <HeaderMenu />
+      )}
     </div>
   );
 };

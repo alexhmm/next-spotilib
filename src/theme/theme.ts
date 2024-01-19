@@ -90,7 +90,7 @@ const error = {
 };
 
 const primary = {
-  main: '#e3f320',
+  main: '#208df3',
 };
 
 const secondary = {
@@ -143,10 +143,6 @@ export const darkTheme = createTheme({
 export const lightTheme = createTheme({
   breakpoints,
   palette: {
-    background: {
-      default: '#eeeeee',
-      paper: '#ffffff',
-    },
     action: {
       hover: 'rgba(0, 0, 0, 0.04)',
     },

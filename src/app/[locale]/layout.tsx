@@ -1,8 +1,12 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
+import { Outfit } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { getServerSession } from 'next-auth';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import { CssBaseline, StyledEngineProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 
 // Components
 import Header from '@/components/Header/Header';
@@ -16,8 +20,9 @@ import SessionProvider from '@/providers/SessionProvider';
 import './globals.scss';
 
 // Theme
-import ThemeRegistry from '@/theme/ThemeRegistry';
+import { darkTheme } from '@/theme/theme';
 
+const outfit = Outfit({ subsets: ['latin'], weight: ['400'] });
 const locales = ['en', 'de'];
 
 export function generateStaticParams() {
@@ -45,17 +50,22 @@ export default async function RootLayout({
   unstable_setRequestLocale(locale);
 
   return (
-    <html lang={locale}>
+    <html className={outfit.className} lang={locale}>
       <body>
-        <SessionProvider session={session}>
-          <QueryClientProvider>
-            <ThemeRegistry options={{ key: 'mui' }}>
-              <Header unauthorized={!session} />
-              <Nav locale={locale} />
-              {children}
-            </ThemeRegistry>
-          </QueryClientProvider>
-        </SessionProvider>
+        <AppRouterCacheProvider>
+          <ThemeProvider theme={darkTheme}>
+            <StyledEngineProvider injectFirst>
+              <CssBaseline />
+              <SessionProvider session={session}>
+                <QueryClientProvider>
+                  <Header unauthorized={!session} />
+                  <Nav locale={locale} />
+                  {children}
+                </QueryClientProvider>
+              </SessionProvider>
+            </StyledEngineProvider>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

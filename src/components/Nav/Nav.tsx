@@ -8,6 +8,9 @@ import { Link } from '@/navigation';
 // Styles
 import styles from './Nav.module.scss';
 
+// UI
+import Button from '@/ui/Button/Button';
+
 type NavProps = {
   locale: string;
 };
@@ -19,8 +22,12 @@ const Nav: FC<NavProps> = (props) => {
 
   return (
     <div className={styles['nav']}>
-      <Link href="/">{t('nav.home')}</Link>
-      <Link href="/posts">{t('nav.posts')}</Link>
+      <Link href="/">
+        <Button>{t('nav.home')}</Button>
+      </Link>
+      <Link href="/posts">
+        <Button>{t('nav.posts')}</Button>
+      </Link>
     </div>
   );
 };

@@ -2,13 +2,15 @@
 
 import { FC, useCallback } from 'react';
 import { useLocale } from 'next-intl';
-import { Button } from '@mui/material';
 
 // Navigation
 import { usePathname, useRouter } from '@/navigation';
 
 // Types
 import { Language } from '@/types/shared.types';
+
+// UI
+import Button from '@/ui/Button/Button';
 
 interface Props {
   title: string;
@@ -28,7 +30,11 @@ const HomeContentSettings: FC<Props> = (props) => {
     });
   }, [locale, pathname]);
 
-  return <Button onClick={() => changeLanguage()}>{props.title}</Button>;
+  return (
+    <Button variant="outlined" onClick={() => changeLanguage()}>
+      {props.title}
+    </Button>
+  );
 };
 
 export default HomeContentSettings;

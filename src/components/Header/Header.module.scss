@@ -3,6 +3,9 @@
   &-authorized {
     @apply px-4 w-screen xl:px-8;
   }
+  &-content {
+    @apply flex gap-8 items-center;
+  }
   &-unauthorized {
     @apply px-4 w-screen xl:w-[1280px];
   }
