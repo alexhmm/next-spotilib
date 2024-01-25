@@ -2,7 +2,7 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 import { getServerSession } from 'next-auth';
 
 // Components
-import LoginContent from '../components/LoginContent/LoginContent';
+import LoginContent from '../../../components/LoginContent/LoginContent';
 
 // Utils
 import { redirect } from '@/navigation';

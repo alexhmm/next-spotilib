@@ -10,13 +10,13 @@ import { usePathname, useRouter } from '@/navigation';
 import { Language } from '@/types/shared.types';
 
 // UI
-import Button from '@/ui/Button/Button';
+import { Button } from '@/ui/Button';
 
 interface Props {
   title: string;
 }
 
-const HomeContentSettings: FC<Props> = (props) => {
+const SettingsLanguage: FC<Props> = (props) => {
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
@@ -30,11 +30,7 @@ const HomeContentSettings: FC<Props> = (props) => {
     });
   }, [locale, pathname]);
 
-  return (
-    <Button variant="outlined" onClick={() => changeLanguage()}>
-      {props.title}
-    </Button>
-  );
+  return <Button onClick={changeLanguage}>{props.title}</Button>;
 };
 
-export default HomeContentSettings;
+export default SettingsLanguage;

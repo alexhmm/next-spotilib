@@ -1,11 +1,9 @@
-import { useLocale } from 'next-intl';
-import { getTranslator, unstable_setRequestLocale } from 'next-intl/server';
+import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
 import {
   HydrationBoundary,
   QueryClient,
   dehydrate,
 } from '@tanstack/react-query';
-import { Typography } from '@mui/material';
 
 // Components
 import Planets from './components/Planets/Planets';
@@ -15,6 +13,9 @@ import styles from './Posts.module.scss';
 
 // Types
 import { PlanetsResponse } from './types/posts.types';
+
+// UI
+import { Text } from '@/ui/Text';
 
 export async function getPlanets() {
   const res = await fetch('https://swapi.dev/api/planets');
@@ -42,11 +43,11 @@ export default async function Posts({
     queryFn: getPlanets,
   });
 
-  const t = await getTranslator(useLocale(), 'posts');
+  const t = await getTranslations('posts');
 
   return (
     <main className={styles['posts']}>
-      <Typography variant="h5">{t('title')}</Typography>
+      <Text variant="h5">{t('title')}</Text>
       <HydrationBoundary state={dehydrate(queryClient)}>
         <Planets />
       </HydrationBoundary>

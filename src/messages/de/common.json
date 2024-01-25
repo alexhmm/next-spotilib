@@ -18,6 +18,12 @@
         "de": "Deutsch (DE)",
         "en": "Englisch (EN)",
         "title": "Sprache ändern"
+      },
+      "theme": {
+        "dark": "Dunkles Design",
+        "light": "Helles Design",
+        "system": "System Design",
+        "title": "Design ändern"
       }
     }
   }

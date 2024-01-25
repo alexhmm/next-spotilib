@@ -3,23 +3,37 @@
 import { FC } from 'react';
 
 // Icons
-import MenuIcon from '@mui/icons-material/Menu';
+import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 
 // UI
-import IconMenu from '@/ui/Menu/IconMenu';
+import { Button } from '@/ui/Button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/ui/DropdownMenu';
 
 const HeaderMenu: FC = () => {
   return (
-    <IconMenu
-      icon={<MenuIcon />}
-      items={[
-        {
-          action: 'test',
-          title: 'Test',
-        },
-      ]}
-      onAction={(action) => console.log('meunAction', action)}
-    />
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button size="icon" variant="ghost">
+          <HamburgerMenuIcon />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => console.log('Test 1')}>
+          Test 1
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => console.log('Test 2')}>
+          Test 2
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => console.log('Test 3')}>
+          Test 3
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
 

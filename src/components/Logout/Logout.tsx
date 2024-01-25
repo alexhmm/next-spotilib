@@ -3,7 +3,7 @@
 import { signOut, useSession } from 'next-auth/react';
 
 // UI
-import Button from '@/ui/Button/Button';
+import { Button } from '@/ui/Button';
 
 const Logout = () => {
   const session = useSession();
@@ -11,7 +11,7 @@ const Logout = () => {
   return (
     <Button
       disabled={session.status === 'loading'}
-      variant="contained"
+      variant="main"
       onClick={() => signOut()}
     >
       Sign out from Spotify

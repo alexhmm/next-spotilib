@@ -18,6 +18,12 @@
         "de": "German (DE)",
         "en": "English (EN)",
         "title": "Change language"
+      },
+      "theme": {
+        "dark": "Dark theme",
+        "light": "Light theme",
+        "system": "System theme",
+        "title": "Change theme"
       }
     }
   }

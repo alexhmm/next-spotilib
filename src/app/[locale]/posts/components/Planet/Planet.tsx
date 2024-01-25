@@ -1,8 +1,10 @@
 import { FC } from 'react';
-import Link from 'next/link';
 
 // Types
 import { Planet } from '../../types/posts.types';
+
+// UI
+import { Link } from '@/ui/Link';
 
 interface Props {
   planet: Planet;

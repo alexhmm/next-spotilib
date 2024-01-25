@@ -1,12 +1,14 @@
 import { FC } from 'react';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import clsx from 'clsx';
 
+// Components
+import HeaderLink from '../HeaderLink/HeaderLink';
+import HeaderLogo from '../HeaderLogo/HeaderLogo';
+import HeaderMenu from '../HeaderMenu/HeaderMenu';
+
 // Styles
 import styles from './Header.module.scss';
-import HeaderMenu from '../HeaderMenu/HeaderMenu';
-import HeaderButton from '../HeaderButton/HeaderButton';
 
 type HeaderProps = {
   unauthorized?: boolean;
@@ -14,8 +16,6 @@ type HeaderProps = {
 
 const Header: FC<HeaderProps> = (props) => {
   const t = useTranslations('common');
-
-  console.log('unauthorized', props.unauthorized);
 
   return (
     <div
@@ -26,19 +26,13 @@ const Header: FC<HeaderProps> = (props) => {
           : styles['header-authorized']
       )}
     >
-      <Image
-        src="/logo.svg"
-        alt="Spotilib Logo"
-        width={87}
-        height={20}
-        priority
-      />
+      <HeaderLogo />
       {props.unauthorized ? (
         <div className={styles['header-content']}>
           {props.unauthorized && (
             <>
-              <HeaderButton href="/about">{t('menu.about')}</HeaderButton>
-              <HeaderButton href="/faq">{t('menu.faq')}</HeaderButton>
+              <HeaderLink href="/about">{t('menu.about')}</HeaderLink>
+              <HeaderLink href="/faq">{t('menu.faq')}</HeaderLink>
             </>
           )}
         </div>

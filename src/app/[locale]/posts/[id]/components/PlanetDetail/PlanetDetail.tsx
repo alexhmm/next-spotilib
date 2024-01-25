@@ -2,7 +2,6 @@
 
 import { FC } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Typography } from '@mui/material';
 
 // Queries & Mutations
 import { getPost } from '../../page';
@@ -12,6 +11,9 @@ import styles from './PlanetDetail.module.scss';
 
 // Types
 import { Planet } from '../../../types/posts.types';
+
+// UI
+import { Text } from '@/ui/Text';
 
 interface Props {
   id: string;
@@ -26,7 +28,7 @@ const PlanetDetail: FC<Props> = (props) => {
 
   return (
     <div className={styles['planet-detail']}>
-      <Typography variant="h6">{data?.name}</Typography>
+      <Text variant="h6">{data?.name}</Text>
       <div>{data?.climate}</div>
     </div>
   );

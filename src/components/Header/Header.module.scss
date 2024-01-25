@@ -1,12 +1,12 @@
 .header {
   @apply flex h-16 items-center justify-between;
   &-authorized {
-    @apply px-4 w-screen xl:px-8;
+    @apply box-border w-full;
   }
   &-content {
     @apply flex gap-8 items-center;
   }
   &-unauthorized {
-    @apply px-4 w-screen xl:w-[1280px];
+    @apply w-screen xl:w-[1280px];
   }
 }
