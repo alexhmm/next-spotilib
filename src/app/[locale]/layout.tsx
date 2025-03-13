@@ -3,23 +3,21 @@ import type { Metadata } from 'next';
 import { Outfit } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { getServerSession } from 'next-auth';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { hasLocale, NextIntlClientProvider } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
+import clsx from 'clsx';
 
-// Components
 import Header from '@/components/Header/Header';
 import Nav from '@/components/Nav/Nav';
 
-// Providers
 import QueryClientProvider from '@/providers/QueryClientProvider';
 import SessionProvider from '@/providers/SessionProvider';
 import ThemeProvider from '@/providers/ThemeProvider';
 
-// Styles
+import { routing } from '@/i18n/routing';
+
 import './globals.scss';
 import styles from './Layout.module.scss';
-
-// Theme
-import clsx from 'clsx';
 
 const outfit = Outfit({ subsets: ['latin'], weight: ['400'] });
 const locales = ['en', 'de'];
@@ -35,18 +33,21 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: ReactNode;
   params: { locale: string };
 }) {
+  const { locale } = await params;
   const session = await getServerSession();
 
-  // Validate that the incoming `locale` parameter is valid
-  const isValidLocale = locales.some((cur) => cur === locale);
-  if (!isValidLocale) notFound();
+  // Ensure that the incoming `locale` is valid
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
 
-  unstable_setRequestLocale(locale);
+  // Enable static rendering
+  setRequestLocale(locale);
 
   return (
     <html
@@ -56,22 +57,25 @@ export default async function RootLayout({
         !session && styles['layout-unauthorized']
       )}
       lang={locale}
+      suppressHydrationWarning
     >
       <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SessionProvider session={session}>
-            <QueryClientProvider>
-              <Header unauthorized={!session} />
-              <Nav locale={locale} />
-              {children}
-            </QueryClientProvider>
-          </SessionProvider>
-        </ThemeProvider>
+        <NextIntlClientProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <SessionProvider session={session}>
+              <QueryClientProvider>
+                <Header unauthorized={!session} />
+                <Nav locale={locale} />
+                {children}
+              </QueryClientProvider>
+            </SessionProvider>
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

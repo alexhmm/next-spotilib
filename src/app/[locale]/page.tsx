@@ -1,5 +1,5 @@
 import { getServerSession } from 'next-auth';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 // Components
 import SettingsLanguage from '@/components/SettingsLanguage/SettingsLanguage';
@@ -20,16 +20,14 @@ import { Link } from '@/ui/Link';
 import { LoadingSpinner } from '@/ui/LoadingSpinner';
 import { Text } from '@/ui/Text';
 
-export default async function Home({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
+export default async function Home({ params }: { params: { locale: string } }) {
+  const { locale } = await params;
+
   const session = await getServerSession();
   const tCommon = await getTranslations('common');
   const tHome = await getTranslations('home');
 
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   return (
     <ProtectedRoute>

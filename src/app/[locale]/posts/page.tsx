@@ -1,4 +1,4 @@
-import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import {
   HydrationBoundary,
   QueryClient,
@@ -31,11 +31,12 @@ export async function getPlanets() {
 }
 
 export default async function Posts({
-  params: { locale },
+  params,
 }: {
   params: { locale: string };
 }) {
-  unstable_setRequestLocale(locale);
+  const { locale } = await params;
+  setRequestLocale(locale);
 
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery<PlanetsResponse>({

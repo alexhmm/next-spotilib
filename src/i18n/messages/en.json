@@ -1,0 +1,36 @@
+{
+  "common": {
+    "menu": {
+      "about": "About us",
+      "faq": "FAQ",
+      "home": "Home",
+      "imprint": "Imprint",
+      "login": "Login",
+      "logout": "Logout",
+      "privacy": "Privacy"
+    },
+    "nav": {
+      "home": "Home",
+      "posts": "Posts"
+    },
+    "settings": {
+      "language": {
+        "de": "German (DE)",
+        "en": "English (EN)",
+        "title": "Change language"
+      },
+      "theme": {
+        "dark": "Dark theme",
+        "light": "Light theme",
+        "system": "System theme",
+        "title": "Change theme"
+      }
+    }
+  },
+  "home": {
+    "title": "Welcome"
+  },
+  "posts": {
+    "title": "Posts"
+  }
+}

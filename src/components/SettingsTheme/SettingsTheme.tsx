@@ -26,7 +26,7 @@ type SettingsThemeProps = {
 };
 
 const SettingsTheme: FC<SettingsThemeProps> = (props) => {
-  const { resolvedTheme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   return (
     <DropdownMenu>
@@ -34,7 +34,7 @@ const SettingsTheme: FC<SettingsThemeProps> = (props) => {
         <Button className={styles['settings-theme-button']} variant="outline">
           {/* <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" /> */}
-          {resolvedTheme === 'dark' ? <MoonIcon /> : <SunIcon />}
+          {/* {theme === 'dark' ? <MoonIcon /> : <SunIcon />} */}
           {/* <span className="sr-only">Toggle theme</span> */}
           {props.title}
         </Button>
@@ -56,9 +56,9 @@ const SettingsTheme: FC<SettingsThemeProps> = (props) => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <rect width="20" height="14" x="2" y="3" rx="2" />
             <line x1="8" x2="16" y1="21" y2="21" />

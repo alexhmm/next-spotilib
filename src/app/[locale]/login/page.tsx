@@ -1,23 +1,25 @@
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { getServerSession } from 'next-auth';
 
-// Components
 import LoginContent from '../../../components/LoginContent/LoginContent';
 
-// Utils
 import { redirect } from '@/navigation';
 
 export default async function Login({
-  params: { locale },
+  params,
 }: {
   params: { locale: string };
 }) {
+  const { locale } = await params;
   const session = await getServerSession();
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   // Redirect if session is available
   if (session) {
-    redirect('/');
+    redirect({
+      href: '/',
+      locale,
+    });
   }
 
   return <LoginContent />;

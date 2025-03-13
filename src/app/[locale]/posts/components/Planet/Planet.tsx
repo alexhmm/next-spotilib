@@ -1,13 +1,13 @@
 import { FC } from 'react';
 
 // Types
-import { Planet } from '../../types/posts.types';
+import { Planet as IPlanet } from '../../types/posts.types';
 
 // UI
 import { Link } from '@/ui/Link';
 
 interface Props {
-  planet: Planet;
+  planet: IPlanet;
 }
 
 const Planet: FC<Props> = (props) => {

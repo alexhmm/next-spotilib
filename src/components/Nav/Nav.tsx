@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 
 // Components
 import HeaderLink from '../HeaderLink/HeaderLink';
@@ -13,7 +13,7 @@ type NavProps = {
 };
 
 const Nav: FC<NavProps> = (props) => {
-  unstable_setRequestLocale(props.locale);
+  setRequestLocale(props.locale);
 
   const t = useTranslations('common');
 

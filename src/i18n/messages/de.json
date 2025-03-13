@@ -26,5 +26,11 @@
         "title": "Design ändern"
       }
     }
+  },
+  "home": {
+    "title": "Willkommen"
+  },
+  "posts": {
+    "title": "Beiträge"
   }
 }
