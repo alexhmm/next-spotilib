@@ -31,8 +31,8 @@ const Header: FC<HeaderProps> = (props) => {
         <div className={styles['header-content']}>
           {props.unauthorized && (
             <>
-              <HeaderLink href="/about">{t('menu.about')}</HeaderLink>
-              <HeaderLink href="/faq">{t('menu.faq')}</HeaderLink>
+              <HeaderLink href="/about">{t('nav.about')}</HeaderLink>
+              <HeaderLink href="/faq">{t('nav.faq')}</HeaderLink>
             </>
           )}
         </div>

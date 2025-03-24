@@ -1,18 +1,17 @@
 {
   "common": {
     "menu": {
+      "login": "Anmelden",
+      "logout": "Abmelden",
+      "privacy": "Datenschutzerklärung"
+    },
+    "nav": {
       "about": "Über uns",
       "faq": "FAQ",
       "home": "Home",
       "imprint": "Impressum",
-      "login": "Anmelden",
-      "logout": "Abmelden",
-      "privacy": "Datenschutzerklärung",
+      "posts": "Beiträge",
       "profile": "Profil"
-    },
-    "nav": {
-      "home": "Home",
-      "posts": "Beiträge"
     },
     "settings": {
       "language": {

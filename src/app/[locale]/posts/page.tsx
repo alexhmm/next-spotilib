@@ -15,7 +15,7 @@ import styles from './Posts.module.scss';
 import { PlanetsResponse } from './types/posts.types';
 
 // UI
-import { Text } from '@/ui/Text';
+import { Text } from '@/lib/ui/Text';
 
 export async function getPlanets() {
   const res = await fetch('https://swapi.dev/api/planets');

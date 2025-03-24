@@ -3,7 +3,7 @@
 import { signOut, useSession } from 'next-auth/react';
 
 // UI
-import { Button } from '@/ui/Button';
+import { Button } from '@/lib/ui/Button';
 
 const Logout = () => {
   const session = useSession();

@@ -4,18 +4,17 @@
 declare const messages: {
   "common": {
     "menu": {
+      "login": "Login",
+      "logout": "Logout",
+      "privacy": "Privacy"
+    },
+    "nav": {
       "about": "About us",
       "faq": "FAQ",
       "home": "Home",
       "imprint": "Imprint",
-      "login": "Login",
-      "logout": "Logout",
-      "privacy": "Privacy",
+      "posts": "Posts",
       "profile": "Profile"
-    },
-    "nav": {
-      "home": "Home",
-      "posts": "Posts"
     },
     "settings": {
       "language": {

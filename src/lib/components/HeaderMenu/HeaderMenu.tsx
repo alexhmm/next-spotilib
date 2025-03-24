@@ -9,16 +9,16 @@ import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import useSpotify from '@/lib/hooks/use-spotify';
 
 // Types
-import { User } from '@/types/spotify/user.types';
+import { User } from '@/lib/types/spotify/user.types';
 
 // UI
-import { Button } from '@/ui/Button';
+import { Button } from '@/lib/ui/Button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/ui/DropdownMenu';
+} from '@/lib/ui/DropdownMenu';
 
 const HeaderMenu: FC = () => {
   const router = useRouter();
@@ -73,7 +73,7 @@ const HeaderMenu: FC = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => router.push(`/user/${user?.id}`)}>
-          {t('common.menu.profile')}
+          {t('common.nav.profile')}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

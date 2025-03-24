@@ -13,7 +13,7 @@ import styles from './PlanetDetail.module.scss';
 import { Planet } from '../../../types/posts.types';
 
 // UI
-import { Text } from '@/ui/Text';
+import { Text } from '@/lib/ui/Text';
 
 interface Props {
   id: string;

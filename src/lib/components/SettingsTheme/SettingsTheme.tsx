@@ -10,13 +10,13 @@ import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
 import styles from './SettingsTheme.module.scss';
 
 // UI
-import { Button } from '@/ui/Button';
+import { Button } from '@/lib/ui/Button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/ui/DropdownMenu';
+} from '@/lib/ui/DropdownMenu';
 
 type SettingsThemeProps = {
   dark: string;

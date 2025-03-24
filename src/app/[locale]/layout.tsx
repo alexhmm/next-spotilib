@@ -8,13 +8,13 @@ import { setRequestLocale } from 'next-intl/server';
 import clsx from 'clsx';
 
 // Components
-import Header from '@/components/Header/Header';
-import Nav from '@/components/Nav/Nav';
+import Header from '@/lib/components/Header/Header';
+import Nav from '@/lib/components/Nav/Nav';
 
 // Providers
-import QueryClientProvider from '@/providers/QueryClientProvider';
-import SessionProvider from '@/providers/SessionProvider';
-import ThemeProvider from '@/providers/ThemeProvider';
+import QueryClientProvider from '@/lib/providers/QueryClientProvider';
+import SessionProvider from '@/lib/providers/SessionProvider';
+import ThemeProvider from '@/lib/providers/ThemeProvider';
 
 // Routing
 import { routing } from '@/i18n/routing';

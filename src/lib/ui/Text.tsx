@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import clsx from 'clsx';
 
 // Utils
-import { cn } from '@/utils/shadcn-ui.utils';
+import { cn } from '@/lib/utils/shadcn-ui.utils';
 
 const textVariants = cva('', {
   variants: {

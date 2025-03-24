@@ -1,8 +1,8 @@
 // Types
-import { User as IUser } from '@/types/spotify/user.types';
+import { User as IUser } from '@/lib/types/spotify/user.types';
 
 // Utils
-import { getSpotifyData } from '@/utils/spotify.utils';
+import { getSpotifyData } from '@/lib/utils/spotify.utils';
 
 export default async function User() {
   try {

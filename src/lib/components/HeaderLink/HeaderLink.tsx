@@ -6,7 +6,7 @@ import { FC } from 'react';
 import { usePathname } from '@/navigation';
 
 // UI
-import { Link } from '@/ui/Link';
+import { Link } from '@/lib/ui/Link';
 
 type HeaderLinkProps = {
   children: string;

@@ -1,7 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { getServerSession } from 'next-auth';
 
-import LoginContent from '../../../components/LoginContent/LoginContent';
+import LoginContent from './components/LoginContent/LoginContent';
 
 import { redirect } from '@/navigation';
 

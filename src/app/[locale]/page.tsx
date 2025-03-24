@@ -2,23 +2,23 @@ import { getServerSession } from 'next-auth';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 // Components
-import SettingsLanguage from '@/components/SettingsLanguage/SettingsLanguage';
-import LoginContent from '../../components/LoginContent/LoginContent';
-import Logout from '../../components/Logout/Logout';
-import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute';
-import SettingsTheme from '@/components/SettingsTheme/SettingsTheme';
+import SettingsLanguage from '@/lib/components/SettingsLanguage/SettingsLanguage';
+import LoginContent from './login/components/LoginContent/LoginContent';
+import Logout from '../../lib/components/Logout/Logout';
+import ProtectedRoute from '@/lib/components/ProtectedRoute/ProtectedRoute';
+import SettingsTheme from '@/lib/components/SettingsTheme/SettingsTheme';
 
 // Styles
 import styles from './Home.module.scss';
 
 // Types
-import { Language } from '@/types/shared.types';
+import { Language } from '@/lib/types/shared.types';
 
 // UI
-import { Button } from '@/ui/Button';
-import { Link } from '@/ui/Link';
-import { LoadingSpinner } from '@/ui/LoadingSpinner';
-import { Text } from '@/ui/Text';
+import { Button } from '@/lib/ui/Button';
+import { Link } from '@/lib/ui/Link';
+import { LoadingSpinner } from '@/lib/ui/LoadingSpinner';
+import { Text } from '@/lib/ui/Text';
 
 export default async function Home({ params }: { params: { locale: string } }) {
   const { locale } = await params;

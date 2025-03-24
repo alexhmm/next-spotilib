@@ -1,11 +1,11 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
-export default function About({
+export default async function About({
   params: { locale },
 }: {
   params: { locale: string };
 }) {
-  const t = useTranslations('common');
+  const t = await getTranslations('common');
 
-  return <div>{t('menu.about')}</div>;
+  return <div>{t('nav.about')}</div>;
 }

@@ -5,9 +5,9 @@ import { useLocale } from 'next-intl';
 
 import { usePathname, useRouter } from '@/navigation';
 
-import { Language } from '@/types/shared.types';
+import { Language } from '@/lib/types/shared.types';
 
-import { Button } from '@/ui/Button';
+import { Button } from '@/lib/ui/Button';
 
 interface Props {
   title: string;

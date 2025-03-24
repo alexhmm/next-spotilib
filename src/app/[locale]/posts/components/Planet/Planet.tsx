@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { Planet as IPlanet } from '../../types/posts.types';
 
 // UI
-import { Link } from '@/ui/Link';
+import { Link } from '@/lib/ui/Link';
 
 interface Props {
   planet: IPlanet;

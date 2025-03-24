@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { Link as NextLink } from '@/navigation';
 
 // Utils
-import { cn } from '@/utils/shadcn-ui.utils';
+import { cn } from '@/lib/utils/shadcn-ui.utils';
 
 const linkVariants = cva('transition-colors', {
   variants: {
