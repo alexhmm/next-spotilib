@@ -7,15 +7,19 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import clsx from 'clsx';
 
+// Components
 import Header from '@/components/Header/Header';
 import Nav from '@/components/Nav/Nav';
 
+// Providers
 import QueryClientProvider from '@/providers/QueryClientProvider';
 import SessionProvider from '@/providers/SessionProvider';
 import ThemeProvider from '@/providers/ThemeProvider';
 
+// Routing
 import { routing } from '@/i18n/routing';
 
+// Styles
 import './globals.scss';
 import styles from './Layout.module.scss';
 

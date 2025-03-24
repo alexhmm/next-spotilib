@@ -10,7 +10,8 @@ declare const messages: {
       "imprint": "Imprint",
       "login": "Login",
       "logout": "Logout",
-      "privacy": "Privacy"
+      "privacy": "Privacy",
+      "profile": "Profile"
     },
     "nav": {
       "home": "Home",

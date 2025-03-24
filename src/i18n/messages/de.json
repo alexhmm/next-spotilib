@@ -7,7 +7,8 @@
       "imprint": "Impressum",
       "login": "Anmelden",
       "logout": "Abmelden",
-      "privacy": "Datenschutzerklärung"
+      "privacy": "Datenschutzerklärung",
+      "profile": "Profil"
     },
     "nav": {
       "home": "Home",

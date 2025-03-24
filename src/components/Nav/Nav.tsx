@@ -1,6 +1,4 @@
-import { FC } from 'react';
-import { useTranslations } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 // Components
 import HeaderLink from '../HeaderLink/HeaderLink';
@@ -8,14 +6,22 @@ import HeaderLink from '../HeaderLink/HeaderLink';
 // Styles
 import styles from './Nav.module.scss';
 
+// Types
+import { User } from '@/types/spotify/user.types';
+
+// Utils
+import { getSpotifyData } from '@/utils/spotify.utils';
+
 type NavProps = {
   locale: string;
 };
 
-const Nav: FC<NavProps> = (props) => {
+export default async function Nav(props: NavProps) {
+  const data = await getSpotifyData<User>('/me');
+
   setRequestLocale(props.locale);
 
-  const t = useTranslations('common');
+  const t = await getTranslations('common');
 
   return (
     <div className={styles['nav']}>
@@ -23,8 +29,7 @@ const Nav: FC<NavProps> = (props) => {
         {t('nav.home')}
       </HeaderLink>
       <HeaderLink href="/posts">{t('nav.posts')}</HeaderLink>
+      <HeaderLink href={`/user/${data?.id}`}>{t('menu.profile')}</HeaderLink>
     </div>
   );
-};
-
-export default Nav;
+}

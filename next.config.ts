@@ -7,6 +7,8 @@ const withNextIntl = createNextIntlPlugin({
   },
 });
 
-const config: NextConfig = { experimental: { useCache: true } };
+const config: NextConfig = {
+  experimental: { useCache: true },
+};
 
 export default withNextIntl(config);
