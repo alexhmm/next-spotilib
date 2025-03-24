@@ -1,17 +1,16 @@
 {
   "common": {
     "menu": {
-      "login": "Anmelden",
       "logout": "Abmelden",
-      "privacy": "Datenschutzerklärung"
+      "privacy": "Datenschutzerklärung",
+      "profile": "Profil"
     },
     "nav": {
       "about": "Über uns",
       "faq": "FAQ",
       "home": "Home",
       "imprint": "Impressum",
-      "posts": "Beiträge",
-      "profile": "Profil"
+      "posts": "Beiträge"
     },
     "settings": {
       "language": {
@@ -30,7 +29,13 @@
   "home": {
     "title": "Willkommen"
   },
+  "login": {
+    "button": "Login mit Spotify"
+  },
   "posts": {
     "title": "Beiträge"
+  },
+  "user": {
+    "followers": "Followers"
   }
 }

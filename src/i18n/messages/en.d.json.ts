@@ -4,17 +4,16 @@
 declare const messages: {
   "common": {
     "menu": {
-      "login": "Login",
       "logout": "Logout",
-      "privacy": "Privacy"
+      "privacy": "Privacy",
+      "profile": "Profile"
     },
     "nav": {
       "about": "About us",
       "faq": "FAQ",
       "home": "Home",
       "imprint": "Imprint",
-      "posts": "Posts",
-      "profile": "Profile"
+      "posts": "Posts"
     },
     "settings": {
       "language": {
@@ -33,8 +32,14 @@ declare const messages: {
   "home": {
     "title": "Welcome"
   },
+  "login": {
+    "button": "Sign in with Spotify"
+  },
   "posts": {
     "title": "Posts"
+  },
+  "user": {
+    "followers": "Follow:innen"
   }
 };
 export default messages;

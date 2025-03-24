@@ -1,8 +1,9 @@
 'use client';
 
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { signOut, useSession } from 'next-auth/react';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 
 // Hooks
@@ -17,11 +18,14 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/lib/ui/DropdownMenu';
+import { DropdownMenuLabel } from '@radix-ui/react-dropdown-menu';
 
 const HeaderMenu: FC = () => {
   const router = useRouter();
+  const session = useSession();
   const { getSpotifyData, token } = useSpotify();
   const t = useTranslations();
 
@@ -39,6 +43,11 @@ const HeaderMenu: FC = () => {
     }
     return undefined;
   }, [user?.images]);
+
+  const logout = useCallback(() => {
+    signOut();
+    router.push('/');
+  }, []);
 
   useEffect(() => {
     const getUserData = async () => {
@@ -72,8 +81,22 @@ const HeaderMenu: FC = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
+        <DropdownMenuLabel className="flex flex-col px-2 py-1.5">
+          <span className="text-sm truncate">{user?.display_name}</span>
+          <span className="font-normal text-foreground/60 text-xs">{`${t(
+            'user.followers'
+          )}: ${user?.followers.total}`}</span>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => router.push(`/user/${user?.id}`)}>
-          {t('common.nav.profile')}
+          {t('common.menu.profile')}
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem
+          disabled={session.status === 'loading'}
+          onClick={logout}
+        >
+          {t('common.menu.logout')}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

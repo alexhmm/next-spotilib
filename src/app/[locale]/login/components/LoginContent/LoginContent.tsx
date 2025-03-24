@@ -1,12 +1,14 @@
 'use client';
 
 import { signIn, useSession } from 'next-auth/react';
+import { useTranslations } from 'next-intl';
 
 // UI
 import { Button } from '@/lib/ui/Button';
 
 const LoginContent = () => {
   const session = useSession();
+  const t = useTranslations();
 
   return (
     <Button
@@ -14,7 +16,7 @@ const LoginContent = () => {
       variant="main"
       onClick={() => signIn('spotify')}
     >
-      Sign in with Spotify
+      {t('login.button')}
     </Button>
   );
 };
