@@ -10,7 +10,7 @@ import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import useSpotify from '@/lib/hooks/use-spotify';
 
 // Types
-import { User } from '@/lib/types/spotify/user.types';
+import { SpotifyUser } from '@/lib/types/spotify.types';
 
 // UI
 import { Button } from '@/lib/ui/Button';
@@ -29,7 +29,7 @@ const HeaderMenu: FC = () => {
   const { getSpotifyData, token } = useSpotify();
   const t = useTranslations();
 
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<SpotifyUser | null>(null);
 
   const image = useMemo(() => {
     if (user?.images && user?.images.length > 1) {
@@ -52,7 +52,7 @@ const HeaderMenu: FC = () => {
   useEffect(() => {
     const getUserData = async () => {
       if (token) {
-        const data = await getSpotifyData<User | undefined>('/me');
+        const data = await getSpotifyData<SpotifyUser | undefined>('/me');
         data && setUser(data);
       }
     };

@@ -10,6 +10,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        card: 'hover:bg-card hover:text-accent-foreground',
         default:
           'bg-primary text-primary-foreground shadow hover:bg-primary/90',
         error: 'bg-error text-white shadow hover:bg-error-hover',

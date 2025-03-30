@@ -1,5 +1,5 @@
 // Types
-import { User as IUser } from '@/lib/types/spotify/user.types';
+import { SpotifyUser as IUser } from '@/lib/types/spotify.types';
 
 // Utils
 import { getSpotifyData } from '@/lib/utils/spotify.utils';

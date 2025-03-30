@@ -7,7 +7,7 @@ import HeaderLink from '../HeaderLink/HeaderLink';
 import styles from './Nav.module.scss';
 
 // Types
-import { User } from '@/lib/types/spotify/user.types';
+import { SpotifyUser } from '@/lib/types/spotify.types';
 
 // Utils
 import { getSpotifyData } from '@/lib/utils/spotify.utils';
@@ -17,7 +17,7 @@ type NavProps = {
 };
 
 export default async function Nav(props: NavProps) {
-  const data = await getSpotifyData<User>('/me');
+  const data = await getSpotifyData<SpotifyUser>('/me');
 
   setRequestLocale(props.locale);
 

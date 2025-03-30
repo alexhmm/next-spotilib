@@ -15,6 +15,7 @@ declare const messages: {
       "imprint": "Imprint",
       "posts": "Posts"
     },
+    "search": "What do you want to search?",
     "settings": {
       "language": {
         "de": "German (DE)",
