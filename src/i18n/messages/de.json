@@ -1,4 +1,7 @@
 {
+  "artists": {
+    "title": "Künstler:innen"
+  },
   "common": {
     "menu": {
       "logout": "Abmelden",
@@ -7,6 +10,7 @@
     },
     "nav": {
       "about": "Über uns",
+      "artists": "Künstler:innen",
       "faq": "FAQ",
       "home": "Home",
       "imprint": "Impressum",

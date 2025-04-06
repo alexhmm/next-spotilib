@@ -28,6 +28,7 @@ export default async function Nav(props: NavProps) {
       <HeaderLink exact href="/">
         {t('nav.home')}
       </HeaderLink>
+      <HeaderLink href="/artists">{t('nav.artists')}</HeaderLink>
       <HeaderLink href="/posts">{t('nav.posts')}</HeaderLink>
       <HeaderLink href={`/user/${data?.id}`}>{t('menu.profile')}</HeaderLink>
       <HeaderLink exact href="/about">

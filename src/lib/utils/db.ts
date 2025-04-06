@@ -1,16 +1,7 @@
 import Dexie, { type Table } from 'dexie';
 
-// Define artist types
-export interface Artist {
-  id: string;
-  name: string;
-  imageUrl?: string;
-  genres?: string[];
-  popularity?: number;
-  followers?: number;
-  savedAt: Date;
-  // Add any other fields you want to store
-}
+// Types
+import { DBArtist } from '@/app/[locale]/artists/types/artists.types';
 
 export interface ArtistList {
   id?: number;
@@ -29,7 +20,7 @@ export interface ArtistInList {
 
 // Define the database
 class SpotilibDatabase extends Dexie {
-  artists!: Table<Artist>;
+  artists!: Table<DBArtist>;
   artistLists!: Table<ArtistList>;
   artistsInLists!: Table<ArtistInList>;
 
@@ -38,9 +29,7 @@ class SpotilibDatabase extends Dexie {
 
     // Define tables and indexes
     this.version(1).stores({
-      artists: 'id, name, savedAt',
-      artistLists: '++id, name, createdAt, updatedAt',
-      artistsInLists: '++id, listId, artistId, addedAt',
+      artists: 'id, createdAt, images, name, playedAt',
     });
   }
 }

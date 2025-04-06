@@ -1,3 +1,5 @@
+'use client';
+
 import { SpotifyType } from '@/lib/types/spotify.types';
 import { FC, useMemo } from 'react';
 
@@ -8,7 +10,7 @@ type AvatarFallbackProps = {
   type: SpotifyType;
 };
 
-export const AvatarFallback: FC<AvatarFallbackProps> = (props) => {
+const AvatarFallback: FC<AvatarFallbackProps> = (props) => {
   const icon = useMemo(() => {
     switch (props.type) {
       case SpotifyType.Artist:
@@ -24,3 +26,5 @@ export const AvatarFallback: FC<AvatarFallbackProps> = (props) => {
     </div>
   );
 };
+
+export default AvatarFallback;

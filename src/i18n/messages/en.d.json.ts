@@ -2,6 +2,9 @@
 // See: https://next-intl.dev/docs/workflows/typescript#messages-arguments
 
 declare const messages: {
+  "artists": {
+    "title": "Artists"
+  },
   "common": {
     "menu": {
       "logout": "Logout",
@@ -10,6 +13,7 @@ declare const messages: {
     },
     "nav": {
       "about": "About us",
+      "artists": "Artists",
       "faq": "FAQ",
       "home": "Home",
       "imprint": "Imprint",

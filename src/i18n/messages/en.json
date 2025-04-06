@@ -1,4 +1,7 @@
 {
+  "artists": {
+    "title": "Artists"
+  },
   "common": {
     "menu": {
       "logout": "Logout",
@@ -7,6 +10,7 @@
     },
     "nav": {
       "about": "About us",
+      "artists": "Artists",
       "faq": "FAQ",
       "home": "Home",
       "imprint": "Imprint",
