@@ -12,7 +12,6 @@ import { SpotifyType } from '@/lib/types/spotify.types';
 type ArtistCardProps = {
   artist: Artist;
   type: ArtistCardType;
-  onUpdate?: () => void;
 };
 
 export const ArtistCard: FC<ArtistCardProps> = (props) => {
@@ -23,11 +22,7 @@ export const ArtistCard: FC<ArtistCardProps> = (props) => {
       target="_blank"
     >
       <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100">
-        <ArtistMenu
-          artist={props.artist}
-          type={props.type}
-          onUpdate={props.onUpdate}
-        />
+        <ArtistMenu artist={props.artist} type={props.type} />
       </div>
       {props.artist.images[0] && props.artist.images[0].url ? (
         <img
@@ -37,7 +32,9 @@ export const ArtistCard: FC<ArtistCardProps> = (props) => {
       ) : (
         <AvatarFallback type={SpotifyType.Artist} />
       )}
-      <span className="font-bold truncate w-full">{props.artist.name}</span>
+      <span className="font-bold text-center truncate w-full">
+        {props.artist.name}
+      </span>
     </Link>
   );
 };

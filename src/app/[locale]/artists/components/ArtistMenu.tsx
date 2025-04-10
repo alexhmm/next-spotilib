@@ -1,9 +1,10 @@
 'use client';
 
 import { FC, useCallback } from 'react';
+import { useTranslations } from 'next-intl';
 
 // Hooks
-import { useArtistDatabase } from '@/lib/hooks/use-artist-db';
+import { useArtistsDatabase } from '@/lib/hooks/use-artists-db';
 
 // Icons
 import { DotsVerticalIcon } from '@radix-ui/react-icons';
@@ -22,15 +23,14 @@ import { Artist, ArtistCardType } from '../types/artists.types';
 type ArtistMenuProps = {
   artist: Artist;
   type: ArtistCardType;
-  onUpdate?: () => void;
 };
 
 const ArtistMenu: FC<ArtistMenuProps> = (props) => {
-  const { removeArtist, saveArtist } = useArtistDatabase();
+  const { removeArtist, saveArtist } = useArtistsDatabase();
+  const t = useTranslations();
 
   const onRemoveArtist = useCallback(() => {
     removeArtist(props.artist.id);
-    props.onUpdate && props.onUpdate();
   }, []);
 
   return (
@@ -41,12 +41,12 @@ const ArtistMenu: FC<ArtistMenuProps> = (props) => {
       <DropdownMenuContent align="end">
         {props.type === ArtistCardType.List && (
           <DropdownMenuItem onClick={onRemoveArtist}>
-            Aus Bibliothek entfernen
+            {t('artists.card.menu.remove')}
           </DropdownMenuItem>
         )}
         {props.type === ArtistCardType.Search && (
           <DropdownMenuItem onClick={() => saveArtist(props.artist)}>
-            Zur Bibliothek hinzufügen
+            {t('artists.card.menu.add')}
           </DropdownMenuItem>
         )}
       </DropdownMenuContent>

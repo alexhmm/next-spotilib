@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 
 // Types
 import { Artist, DBArtist } from '@/app/[locale]/artists/types/artists.types';
@@ -8,28 +8,7 @@ import { Artist, DBArtist } from '@/app/[locale]/artists/types/artists.types';
 // Utils
 import db from '@/lib/utils/db';
 
-export function useArtistDatabase() {
-  const [isReady, setIsReady] = useState(false);
-
-  useEffect(() => {
-    // Open the database
-    db.open()
-      .then(() => {
-        setIsReady(true);
-      })
-      .catch((err) => {
-        console.error('Failed to open database:', err);
-        // setError(err);
-      });
-
-    // Clean up function to properly close the database when component unmounts
-    return () => {
-      if (db && !db.isOpen()) {
-        db.close();
-      }
-    };
-  }, []); // Empty dependency array ensures this runs once
-
+export function useArtistsDatabase() {
   const getArtists = useCallback(async (): Promise<DBArtist[] | undefined> => {
     try {
       if (db) return await db.artists.toArray();
@@ -79,7 +58,6 @@ export function useArtistDatabase() {
   }, []);
 
   return {
-    isReady,
     getArtists,
     removeArtist,
     saveArtist,

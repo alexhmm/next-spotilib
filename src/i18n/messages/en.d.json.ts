@@ -3,6 +3,12 @@
 
 declare const messages: {
   "artists": {
+    "card": {
+      "menu": {
+        "add": "Add to library",
+        "remove": "Remove from library"
+      }
+    },
     "title": "Artists"
   },
   "common": {
