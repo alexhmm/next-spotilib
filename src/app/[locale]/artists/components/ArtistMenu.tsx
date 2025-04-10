@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import { useArtistsDatabase } from '@/lib/hooks/use-artists-db';
 
 // Icons
-import { DotsVerticalIcon } from '@radix-ui/react-icons';
+import { EllipsisVerticalIcon } from 'lucide-react';
 
 // UI
 import {
@@ -36,7 +36,7 @@ const ArtistMenu: FC<ArtistMenuProps> = (props) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <DotsVerticalIcon />
+        <EllipsisVerticalIcon size={20} />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         {props.type === ArtistCardType.List && (

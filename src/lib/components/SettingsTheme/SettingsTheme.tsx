@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { useTheme } from 'next-themes';
 
 // Icons
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
+import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react';
 
 // Styles
 import styles from './SettingsTheme.module.scss';
@@ -41,30 +41,13 @@ const SettingsTheme: FC<SettingsThemeProps> = (props) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme('light')}>
-          <SunIcon className="mr-2" /> {props.light}
+          <SunIcon className="mr-2" size={20} /> {props.light}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme('dark')}>
-          <MoonIcon className="mr-2" /> {props.dark}
+          <MoonIcon className="mr-2" size={20} /> {props.dark}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme('system')}>
-          {/* <DesktopIcon className="mr-2" /> {props.system} */}
-          <svg
-            className="mr-2"
-            xmlns="http://www.w3.org/2000/svg"
-            width="15"
-            height="15"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <rect width="20" height="14" x="2" y="3" rx="2" />
-            <line x1="8" x2="16" y1="21" y2="21" />
-            <line x1="12" x2="12" y1="17" y2="21" />
-          </svg>{' '}
-          {props.system}
+          <MonitorIcon className="mr-2" size={20} /> {props.system}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -4,10 +4,12 @@ import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { signOut, useSession } from 'next-auth/react';
-import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 
 // Hooks
 import useSpotify from '@/lib/hooks/use-spotify';
+
+// Icons
+import { MenuIcon } from 'lucide-react';
 
 // Types
 import { SpotifyUser } from '@/lib/types/spotify.types';
@@ -76,7 +78,7 @@ const HeaderMenu: FC = () => {
               alt={`${user?.display_name} user image`}
             />
           ) : (
-            <HamburgerMenuIcon />
+            <MenuIcon size={20} />
           )}
         </Button>
       </DropdownMenuTrigger>

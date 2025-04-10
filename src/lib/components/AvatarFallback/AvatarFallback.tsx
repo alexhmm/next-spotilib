@@ -4,7 +4,7 @@ import { SpotifyType } from '@/lib/types/spotify.types';
 import { FC, useMemo } from 'react';
 
 // Icons
-import { AccessibilityIcon } from '@radix-ui/react-icons';
+import { MusicIcon } from 'lucide-react';
 
 type AvatarFallbackProps = {
   type: SpotifyType;
@@ -14,7 +14,7 @@ const AvatarFallback: FC<AvatarFallbackProps> = (props) => {
   const icon = useMemo(() => {
     switch (props.type) {
       case SpotifyType.Artist:
-        return <AccessibilityIcon className="h-16 w-16" />;
+        return <MusicIcon size={64} />;
       default:
         return null;
     }
